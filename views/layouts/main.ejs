@@ -3,82 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= typeof title !== 'undefined' && title ? title : 'Cannoga College Blog' %></title>
+    <title><%= typeof title !== 'undefined' && title ? title : 'Cannoga College Blog | Student Stories & News' %></title>
     <% if (typeof metaDescription !== 'undefined' && metaDescription) { %>
     <meta name="description" content="<%= metaDescription %>">
+    <% } else { %>
+    <meta name="description" content="Discover student stories, campus news, and international student insights at Cannoga College in Ottawa, Ontario, Canada.">
     <% } %>
     <% if (typeof ogImage !== 'undefined' && ogImage) { %>
     <meta property="og:image" content="<%= ogImage %>">
     <meta property="og:title" content="<%= title %>">
-    <meta property="og:description" content="<%= metaDescription || '' %>">
+    <meta property="og:description" content="<%= typeof metaDescription !== 'undefined' ? metaDescription : '' %>">
     <meta property="og:type" content="article">
     <% } %>
     <link href="/css/output.css?v=<%= Math.random() %>" rel="stylesheet">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
-<body class="min-h-screen bg-white pt-28">
-    <!-- Header - Matching Cannoga College Main Site -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm w-full font-sans border-b border-neutral-200">
-        <!-- Top Utility Bar (Desktop) -->
+<body class="min-h-screen bg-white pt-28 lg:pt-[148px] font-sans antialiased text-black">
+    <!-- Header - Matching Cannoga College Main Site Header.tsx -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm flex flex-col w-full border-b border-neutral-200">
+        <!-- Top Utility Bar (Desktop only) -->
         <div class="hidden lg:block bg-[#0f2027] text-slate-200 text-xs h-9 w-full border-b border-[#1e3a47]">
-            <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between font-medium">
+            <div class="container mx-auto px-4 max-w-7xl h-full flex items-center justify-between font-medium">
                 <div class="flex items-center gap-6">
                     <span class="text-[#c89211] font-semibold flex items-center gap-1.5">
                         <svg class="w-3.5 h-3.5 fill-[#c89211]" viewBox="0 0 256 256"><path d="M128,16a88.1,88.1,0,0,0-88,88c0,75.3,80,132.1,83.4,134.5a8,8,0,0,0,9.2,0C136,236.1,216,179.3,216,104A88.1,88.1,0,0,0,128,16Zm0,112a24,24,0,1,1,24-24A24,24,0,0,1,128,128Z"/></svg>
-                        Ottawa, Ontario, Canada
+                        Ottawa Campus
                     </span>
                     <span class="text-slate-400">|</span>
-                    <span class="text-slate-300">Designated Learning Institution (DLI)</span>
+                    <a href="https://cannogacollege.ca/admissions" class="hover:text-white text-slate-300 no-underline transition-colors">Future Students</a>
+                    <a href="https://cannogacollege.ca/student-guide" class="hover:text-white text-slate-300 no-underline transition-colors">Current Students</a>
+                    <a href="https://cannogacollege.ca/about" class="hover:text-white text-slate-300 no-underline transition-colors">Faculty &amp; Staff</a>
+                    <a href="https://cannogacollege.ca/alumni" class="hover:text-white text-slate-300 no-underline transition-colors">Alumni</a>
                 </div>
                 <div class="flex items-center gap-6">
-                    <a href="https://cannogacollege.ca/housing" class="hover:text-white transition-colors">Student Housing</a>
-                    <span class="text-slate-500">•</span>
-                    <a href="https://cannogacollege.ca/portal/account/login" class="hover:text-white transition-colors font-semibold text-[#c89211]">Student Portal Login</a>
+                    <a href="https://cannogacollege.ca/student-guide/international" class="hover:text-white text-slate-300 no-underline transition-colors font-semibold">International Students</a>
+                    <a href="https://cannogacollege.ca/portal/support" class="hover:text-white text-slate-300 no-underline transition-colors">IT Support</a>
+                    <div class="flex items-center gap-2 pl-4 border-l border-[#1e3a47] text-slate-300 font-semibold">
+                        <span class="text-white hover:underline cursor-pointer">EN</span>
+                        <span class="text-slate-500">/</span>
+                        <span class="text-slate-400 hover:text-white cursor-pointer">FR</span>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Main Navigation Bar -->
-        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+        <div class="container mx-auto px-4 max-w-7xl h-20 lg:h-28 flex items-center justify-between">
             <!-- Logo -->
             <a href="https://cannogacollege.ca/" class="flex items-center">
-                <img src="/images/logo-cannoga.png" alt="Cannoga College" width="180" height="42" class="h-10 w-auto object-contain" />
+                <img src="/images/logo-cannoga.png" alt="Cannoga College" width="220" height="60" class="h-12 md:h-16 w-auto object-contain shrink-0" />
             </a>
 
             <!-- Desktop Navigation -->
-            <nav class="hidden lg:flex items-center gap-6">
+            <nav class="hidden lg:flex items-center gap-8">
                 <!-- Programs Mega Menu -->
-                <div class="relative group h-20 flex items-center">
-                    <a href="https://cannogacollege.ca/schools" class="text-xs font-bold uppercase tracking-wider flex items-center gap-1 text-slate-800 hover:text-[#0a151a] transition-colors">
+                <div class="relative group h-28 flex items-center">
+                    <a href="https://cannogacollege.ca/schools" class="text-[15.2px] font-bold text-[#2d2d2d] hover:text-black flex items-center gap-1 transition-colors no-underline">
                         Programs
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
+                        <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
                     </a>
-                    <div class="absolute top-full left-0 w-[640px] max-h-[80vh] overflow-y-auto border border-neutral-200 bg-white shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-0 z-50 rounded-b-xl">
-                        <div class="flex">
-                            <div class="flex-1 p-4 bg-neutral-50 border-r border-neutral-200">
-                                <div class="font-extrabold uppercase text-xs tracking-wider text-slate-900 mb-3 px-2">Schools</div>
-                                <div class="space-y-1">
-                                    <a href="https://cannogacollege.ca/schools/arts" class="block px-2 py-1.5 text-xs text-slate-700 hover:text-black hover:bg-neutral-200/60 rounded">School of Arts, Design and Architecture</a>
-                                    <a href="https://cannogacollege.ca/schools/business" class="block px-2 py-1.5 text-xs text-slate-700 hover:text-black hover:bg-neutral-200/60 rounded">School of Business</a>
-                                    <a href="https://cannogacollege.ca/schools/science" class="block px-2 py-1.5 text-xs text-slate-700 hover:text-black hover:bg-neutral-200/60 rounded">School of Science</a>
-                                    <a href="https://cannogacollege.ca/schools/technology" class="block px-2 py-1.5 text-xs text-slate-700 hover:text-black hover:bg-neutral-200/60 rounded">School of Technology</a>
-                                    <a href="https://cannogacollege.ca/schools/health-community" class="block px-2 py-1.5 text-xs text-slate-700 hover:text-black hover:bg-neutral-200/60 rounded">School of Health & Community Services</a>
-                                    <a href="https://cannogacollege.ca/schools/hospitality-tourism" class="block px-2 py-1.5 text-xs text-slate-700 hover:text-black hover:bg-neutral-200/60 rounded">School of Hospitality & Tourism</a>
-                                    <a href="https://cannogacollege.ca/schools/education-social-sciences" class="block px-2 py-1.5 text-xs text-slate-700 hover:text-black hover:bg-neutral-200/60 rounded">School of Education & Social Sciences</a>
-                                    <a href="https://cannogacollege.ca/schools/transportation-aviation" class="block px-2 py-1.5 text-xs text-slate-700 hover:text-black hover:bg-neutral-200/60 rounded">School of Transportation & Aviation</a>
+                    <div class="absolute top-28 left-0 w-[600px] max-h-[80vh] overflow-y-auto shadow-2xl hidden group-hover:block animate-in fade-in slide-in-from-top-1 duration-200 bg-white border border-neutral-100 z-50">
+                        <div class="flex flex-col">
+                            <div>
+                                <div class="bg-[#f5f5f5] px-6 py-3 font-bold uppercase text-sm tracking-wider text-black sticky top-0 border-b border-neutral-100">
+                                    Schools
+                                </div>
+                                <div class="p-2 grid grid-cols-1 gap-x-4">
+                                    <a href="https://cannogacollege.ca/schools/arts" class="block px-4 py-2 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">School of Arts, Design and Architecture</a>
+                                    <a href="https://cannogacollege.ca/schools/business" class="block px-4 py-2 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">School of Business</a>
+                                    <a href="https://cannogacollege.ca/schools/science" class="block px-4 py-2 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">School of Science</a>
+                                    <a href="https://cannogacollege.ca/schools/technology" class="block px-4 py-2 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">School of Technology</a>
+                                    <a href="https://cannogacollege.ca/schools/health-community" class="block px-4 py-2 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">School of Health and Community Services</a>
+                                    <a href="https://cannogacollege.ca/schools/hospitality-tourism" class="block px-4 py-2 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">School of Hospitality and Tourism</a>
+                                    <a href="https://cannogacollege.ca/schools/education-social-sciences" class="block px-4 py-2 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">School of Education and Social Sciences</a>
+                                    <a href="https://cannogacollege.ca/schools/transportation-aviation" class="block px-4 py-2 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">School of Transportation and Aviation</a>
                                 </div>
                             </div>
-                            <div class="flex-1 p-4">
-                                <div class="font-extrabold uppercase text-xs tracking-wider text-slate-900 mb-3 px-2">Popular Departments</div>
-                                <div class="space-y-1">
-                                    <a href="https://cannogacollege.ca/schools/business/accounting-business-law" class="block px-2 py-1.5 text-xs text-slate-700 hover:text-black hover:bg-neutral-100 rounded">Accounting & Business Law</a>
-                                    <a href="https://cannogacollege.ca/schools/science/computer-science-digital" class="block px-2 py-1.5 text-xs text-slate-700 hover:text-black hover:bg-neutral-100 rounded">Computer Science & AI</a>
-                                    <a href="https://cannogacollege.ca/schools/arts/design" class="block px-2 py-1.5 text-xs text-slate-700 hover:text-black hover:bg-neutral-100 rounded">Design & UX</a>
-                                    <a href="https://cannogacollege.ca/schools/business/finance" class="block px-2 py-1.5 text-xs text-slate-700 hover:text-black hover:bg-neutral-100 rounded">Finance & Economics</a>
-                                    <a href="https://cannogacollege.ca/schools/health-community/health-community-dept" class="block px-2 py-1.5 text-xs text-slate-700 hover:text-black hover:bg-neutral-100 rounded">Health & Practical Nursing</a>
-                                    <a href="https://cannogacollege.ca/schools/technology/energy-mechanical" class="block px-2 py-1.5 text-xs text-slate-700 hover:text-black hover:bg-neutral-100 rounded">Mechanical Engineering</a>
+                            <div>
+                                <div class="bg-[#f5f5f5] px-6 py-3 font-bold uppercase text-sm tracking-wider text-black sticky top-0 border-b border-neutral-100">
+                                    Departments
+                                </div>
+                                <div class="p-2 grid grid-cols-2 gap-x-4">
+                                    <a href="https://cannogacollege.ca/schools/business/accounting-business-law" class="block px-4 py-2 text-xs font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">Accounting & Business Law</a>
+                                    <a href="https://cannogacollege.ca/schools/science/computer-science-digital" class="block px-4 py-2 text-xs font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">Computer Science & AI</a>
+                                    <a href="https://cannogacollege.ca/schools/arts/design" class="block px-4 py-2 text-xs font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">Design & UX</a>
+                                    <a href="https://cannogacollege.ca/schools/business/finance" class="block px-4 py-2 text-xs font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">Finance & Economics</a>
+                                    <a href="https://cannogacollege.ca/schools/health-community/health-community-dept" class="block px-4 py-2 text-xs font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">Health & Practical Nursing</a>
+                                    <a href="https://cannogacollege.ca/schools/technology/energy-mechanical" class="block px-4 py-2 text-xs font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">Mechanical Engineering</a>
                                 </div>
                             </div>
                         </div>
@@ -86,58 +97,115 @@
                 </div>
 
                 <!-- Financial Aid Dropdown -->
-                <div class="relative group h-20 flex items-center">
-                    <a href="https://cannogacollege.ca/admissions/tuition" class="text-xs font-bold uppercase tracking-wider flex items-center gap-1 text-slate-800 hover:text-[#0a151a] transition-colors">
+                <div class="relative group h-28 flex items-center">
+                    <a href="https://cannogacollege.ca/admissions/tuition" class="text-[15.2px] font-bold text-[#2d2d2d] hover:text-black flex items-center gap-1 transition-colors no-underline">
                         Financial Aid
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
+                        <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
                     </a>
-                    <div class="absolute top-full left-0 w-64 border border-neutral-200 bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 rounded-b-xl overflow-hidden">
-                        <a href="https://cannogacollege.ca/admissions/tuition" class="block px-5 py-3 text-xs font-semibold text-slate-800 hover:bg-neutral-50 border-b border-neutral-100">Scholarships & Tuition Fees</a>
-                        <a href="https://cannogacollege.ca/refund-withdrawal-policy" class="block px-5 py-3 text-xs font-semibold text-slate-800 hover:bg-neutral-50">Refund & Withdrawal Policy</a>
+                    <div class="absolute top-28 left-0 w-64 shadow-xl hidden group-hover:block animate-in fade-in slide-in-from-top-1 duration-200 bg-white border border-neutral-100 z-50">
+                        <a href="https://cannogacollege.ca/admissions/tuition" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">Scholarships & Tuition Fees</a>
+                        <a href="https://cannogacollege.ca/refund-withdrawal-policy" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">Refund & Withdrawal Policy</a>
                     </div>
                 </div>
 
-                <!-- Future Students -->
-                <div class="relative group h-20 flex items-center">
-                    <a href="https://cannogacollege.ca/admissions" class="text-xs font-bold uppercase tracking-wider flex items-center gap-1 text-slate-800 hover:text-[#0a151a] transition-colors">
+                <!-- Future Students Dropdown -->
+                <div class="relative group h-28 flex items-center">
+                    <a href="https://cannogacollege.ca/admissions" class="text-[15.2px] font-bold text-[#2d2d2d] hover:text-black flex items-center gap-1 transition-colors no-underline">
                         Future Students
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
+                        <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
                     </a>
-                    <div class="absolute top-full left-0 w-64 border border-neutral-200 bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 rounded-b-xl overflow-hidden">
-                        <a href="https://cannogacollege.ca/degree-programmes" class="block px-5 py-3 text-xs font-semibold text-slate-800 hover:bg-neutral-50 border-b border-neutral-100">Degree Programs</a>
-                        <a href="https://cannogacollege.ca/admissions/application-process" class="block px-5 py-3 text-xs font-semibold text-slate-800 hover:bg-neutral-50 border-b border-neutral-100">How to Apply</a>
-                        <a href="https://cannogacollege.ca/admissions/bachelor" class="block px-5 py-3 text-xs font-semibold text-slate-800 hover:bg-neutral-50 border-b border-neutral-100">Bachelor's Admission</a>
-                        <a href="https://cannogacollege.ca/admissions/master" class="block px-5 py-3 text-xs font-semibold text-slate-800 hover:bg-neutral-50">Master's Admissions</a>
+                    <div class="absolute top-28 left-0 w-64 shadow-xl hidden group-hover:block animate-in fade-in slide-in-from-top-1 duration-200 bg-white border border-neutral-100 z-50">
+                        <a href="https://cannogacollege.ca/degree-programmes" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">Degree Programs</a>
+                        <a href="https://cannogacollege.ca/degree-programmes#certificates" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">Certificate & Diploma Programs</a>
+                        <a href="https://cannogacollege.ca/admissions/application-process" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">How to Apply</a>
+                        <a href="https://cannogacollege.ca/admissions/bachelor" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">Bachelor's Admission</a>
+                        <a href="https://cannogacollege.ca/admissions/master" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">Master's Admissions</a>
+                        <a href="https://cannogacollege.ca/admissions-policy" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">Admissions Policy</a>
+                        <a href="https://cannogacollege.ca/admissions/contact-information" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">Admission Services Contact</a>
                     </div>
                 </div>
 
-                <!-- Current Students -->
-                <a href="https://cannogacollege.ca/student-guide" class="text-xs font-bold uppercase tracking-wider text-slate-800 hover:text-[#0a151a] transition-colors">Current Students</a>
+                <!-- Current Students Dropdown -->
+                <div class="relative group h-28 flex items-center">
+                    <a href="https://cannogacollege.ca/student-guide" class="text-[15.2px] font-bold text-[#2d2d2d] hover:text-black flex items-center gap-1 transition-colors no-underline">
+                        Current Students
+                        <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </a>
+                    <div class="absolute top-28 left-0 w-64 shadow-xl hidden group-hover:block animate-in fade-in slide-in-from-top-1 duration-200 bg-white border border-neutral-100 z-50">
+                        <a href="https://cannogacollege.ca/student-guide" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">Student Guide</a>
+                        <a href="https://cannogacollege.ca/housing" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">Student Housing & Accommodations</a>
+                        <a href="https://cannogacollege.ca/student-handbook" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">Student Handbook</a>
+                        <a href="https://cannogacollege.ca/academic-regulations" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">Academic Regulations</a>
+                        <a href="https://cannogacollege.ca/code-of-conduct" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">Code of Conduct</a>
+                    </div>
+                </div>
 
-                <!-- International Students -->
-                <a href="https://cannogacollege.ca/student-guide/international" class="text-xs font-bold uppercase tracking-wider text-slate-800 hover:text-[#0a151a] transition-colors">International</a>
+                <!-- International Students Dropdown -->
+                <div class="relative group h-28 flex items-center">
+                    <a href="https://cannogacollege.ca/student-guide/international" class="text-[15.2px] font-bold text-[#2d2d2d] hover:text-black flex items-center gap-1 transition-colors no-underline">
+                        International Students
+                        <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </a>
+                    <div class="absolute top-28 left-0 w-64 shadow-xl hidden group-hover:block animate-in fade-in slide-in-from-top-1 duration-200 bg-white border border-neutral-100 z-50">
+                        <a href="https://cannogacollege.ca/student-guide/international" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">International Student Guide</a>
+                        <a href="https://cannogacollege.ca/housing" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">Student Housing & Accommodations</a>
+                        <a href="https://cannogacollege.ca/student-guide/arrival" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">Arrival Guide</a>
+                        <a href="https://cannogacollege.ca/student-guide/exchange" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">Exchange Guide</a>
+                        <a href="https://cannogacollege.ca/student-guide/chat-with-cannoga-students" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">Chat with Students</a>
+                    </div>
+                </div>
 
-                <!-- About -->
-                <a href="https://cannogacollege.ca/about" class="text-xs font-bold uppercase tracking-wider text-slate-800 hover:text-[#0a151a] transition-colors">About</a>
+                <!-- Employees Dropdown -->
+                <div class="relative group h-28 flex items-center">
+                    <a href="https://cannogacollege.ca/portal" class="text-[15.2px] font-bold text-[#2d2d2d] hover:text-black flex items-center gap-1 transition-colors no-underline">
+                        Employees
+                        <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </a>
+                    <div class="absolute top-28 left-0 w-64 shadow-xl hidden group-hover:block animate-in fade-in slide-in-from-top-1 duration-200 bg-white border border-neutral-100 z-50">
+                        <a href="https://cannogacollege.ca/portal/support" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">IT Support</a>
+                        <a href="https://cannogacollege.ca/portal/account/login" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">Student Portal Login</a>
+                    </div>
+                </div>
+
+                <!-- About Dropdown -->
+                <div class="relative group h-28 flex items-center">
+                    <a href="https://cannogacollege.ca/about" class="text-[15.2px] font-bold text-[#2d2d2d] hover:text-black flex items-center gap-1 transition-colors no-underline">
+                        About
+                        <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </a>
+                    <div class="absolute top-28 left-0 w-64 shadow-xl hidden group-hover:block animate-in fade-in slide-in-from-top-1 duration-200 bg-white border border-neutral-100 z-50">
+                        <a href="https://cannogacollege.ca/about" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">Our Story</a>
+                        <a href="https://cannogacollege.ca/news" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">News & Events</a>
+                        <a href="https://cannogacollege.ca/research" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">Research Hub</a>
+                        <a href="https://cannogacollege.ca/careers" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">Careers</a>
+                        <a href="https://cannogacollege.ca/alumni" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline border-b border-neutral-50">Alumni</a>
+                        <a href="https://cannogacollege.ca/contact" class="block px-6 py-4 text-sm font-semibold text-[#2d2d2d] hover:bg-neutral-50 hover:text-black no-underline">Contact Us</a>
+                    </div>
+                </div>
             </nav>
 
             <!-- Actions -->
-            <div class="hidden lg:flex items-center gap-4">
-                <!-- Apply Button -->
-                <a href="https://cannogacollege.ca/admissions/application-process" class="bg-[#0a151a] text-white px-6 py-3 rounded-xl text-xs font-bold tracking-wider hover:bg-slate-800 transition-all shadow-sm">
-                    Apply to Cannoga
-                </a>
+            <div class="hidden lg:flex items-center gap-6">
+                <!-- Blog Search Form -->
+                <form action="/" method="GET" class="relative flex items-center">
+                    <input type="text" name="search" placeholder="Search blog..." class="w-44 focus:w-56 transition-all duration-200 px-3 py-1.5 text-xs border border-neutral-300 rounded-full focus:outline-none focus:ring-1 focus:ring-black" />
+                    <button type="submit" class="absolute right-2 text-slate-500 hover:text-black">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    </button>
+                </form>
+
+                <div class="flex items-center gap-2 text-slate-400 font-semibold text-xs border-l border-neutral-200 pl-4">
+                    <span class="text-black hover:underline cursor-pointer">EN</span>
+                    <span>/</span>
+                    <span class="text-slate-500 hover:text-black cursor-pointer">FR</span>
+                </div>
             </div>
 
-            <!-- Mobile Menu Button -->
+            <!-- Mobile Toggle -->
             <div class="lg:hidden flex items-center gap-2">
-                <button id="mobile-menu-btn" class="p-2 bg-neutral-100 rounded-lg">
-                    <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                <button id="mobile-menu-btn" class="p-2 text-[#2d2d2d] hover:text-black focus:outline-none">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
@@ -165,16 +233,17 @@
         </div>
     </div>
 
+    <!-- Main View Content -->
     <%- body %>
 
-    <!-- Footer - Matching Cannoga College Main Site -->
+    <!-- Footer - Matching Cannoga College Main Site Footer.tsx -->
     <footer class="bg-[#0a151a] text-white pt-16 pb-10 border-t border-white/10 font-sans mt-16">
-        <div class="max-w-7xl mx-auto px-4">
+        <div class="container mx-auto px-4 max-w-7xl">
             <!-- Top Row: Brand + Land Acknowledgement + Social -->
             <div class="mb-12 pb-10 border-b border-white/10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
                 <div class="flex flex-col md:flex-row md:items-center gap-6 max-w-4xl">
                     <a href="https://cannogacollege.ca/" class="shrink-0">
-                        <img src="/images/logo-cannoga.png" alt="Cannoga College" width="200" height="48" class="h-16 w-auto object-contain brightness-0 invert" />
+                        <img src="/images/logo-cannoga.png" alt="Cannoga College" width="220" height="60" class="h-20 md:h-24 w-auto object-contain brightness-0 invert" />
                     </a>
                     <div class="text-xs text-white/80 leading-relaxed border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-6">
                         <span class="font-semibold block text-white mb-1 uppercase tracking-wider text-[10px]">Land Acknowledgement</span>
@@ -182,11 +251,11 @@
                     </div>
                 </div>
                 <div class="flex space-x-5 shrink-0 items-center">
-                    <a href="https://www.youtube.com/@CannogaCollege" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="text-white hover:text-[#c89211] transition-all transform hover:scale-110">
-                        <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    <a href="https://www.youtube.com/@CannogaCollege" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="text-white hover:text-[#c89211] hover:scale-110 transition-all transform inline-block">
+                        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                     </a>
-                    <a href="https://www.tiktok.com/@cannoga_college" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="text-white hover:text-[#c89211] transition-all transform hover:scale-110">
-                        <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                    <a href="https://www.tiktok.com/@cannoga_college" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="text-white hover:text-[#c89211] hover:scale-110 transition-all transform inline-block">
+                        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
                     </a>
                 </div>
             </div>
@@ -197,11 +266,11 @@
                 <div>
                     <h3 class="font-bold text-sm uppercase tracking-widest mb-5 text-white">Study</h3>
                     <ul class="space-y-3">
-                        <li><a href="https://cannogacollege.ca/studies" class="text-white text-sm hover:underline">All Courses</a></li>
-                        <li><a href="https://cannogacollege.ca/admissions" class="text-white text-sm hover:underline">Admissions</a></li>
-                        <li><a href="https://cannogacollege.ca/housing" class="text-white text-sm hover:underline">Student Housing</a></li>
-                        <li><a href="https://cannogacollege.ca/admissions/tuition" class="text-white text-sm hover:underline">Scholarships</a></li>
-                        <li><a href="https://cannogacollege.ca/student-guide/international" class="text-white text-sm hover:underline">International Students</a></li>
+                        <li><a href="https://cannogacollege.ca/studies" class="text-white text-sm hover:underline no-underline">All Courses</a></li>
+                        <li><a href="https://cannogacollege.ca/admissions" class="text-white text-sm hover:underline no-underline">Admissions</a></li>
+                        <li><a href="https://cannogacollege.ca/housing" class="text-white text-sm hover:underline no-underline">Student Housing</a></li>
+                        <li><a href="https://cannogacollege.ca/admissions/tuition" class="text-white text-sm hover:underline no-underline">Scholarships</a></li>
+                        <li><a href="https://cannogacollege.ca/student-guide/international" class="text-white text-sm hover:underline no-underline">International Students</a></li>
                     </ul>
                 </div>
 
@@ -209,10 +278,10 @@
                 <div>
                     <h3 class="font-bold text-sm uppercase tracking-widest mb-5 text-white">About</h3>
                     <ul class="space-y-3">
-                        <li><a href="https://cannogacollege.ca/about" class="text-white text-sm hover:underline">Our Story</a></li>
-                        <li><a href="https://cannogacollege.ca/news" class="text-white text-sm hover:underline">News & Events</a></li>
-                        <li><a href="https://cannogacollege.ca/research" class="text-white text-sm hover:underline">Research</a></li>
-                        <li><a href="https://cannogacollege.ca/student-life" class="text-white text-sm hover:underline">Campus Life</a></li>
+                        <li><a href="https://cannogacollege.ca/about" class="text-white text-sm hover:underline no-underline">Our Story</a></li>
+                        <li><a href="https://cannogacollege.ca/news" class="text-white text-sm hover:underline no-underline">News & Events</a></li>
+                        <li><a href="https://cannogacollege.ca/research" class="text-white text-sm hover:underline no-underline">Research</a></li>
+                        <li><a href="https://cannogacollege.ca/student-life" class="text-white text-sm hover:underline no-underline">Campus Life</a></li>
                     </ul>
                 </div>
 
@@ -220,14 +289,14 @@
                 <div>
                     <h3 class="font-bold text-sm uppercase tracking-widest mb-5 text-white">Resources</h3>
                     <ul class="space-y-3">
-                        <li><a href="https://cannogacollege.ca/admissions-policy" class="text-white text-sm hover:underline">Admissions Policy</a></li>
-                        <li><a href="https://cannogacollege.ca/academic-regulations" class="text-white text-sm hover:underline">Academic Regulations</a></li>
-                        <li><a href="https://cannogacollege.ca/student-handbook" class="text-white text-sm hover:underline">Student Handbook</a></li>
-                        <li><a href="https://cannogacollege.ca/refund-withdrawal-policy" class="text-white text-sm hover:underline">Refund Policy</a></li>
-                        <li><a href="https://cannogacollege.ca/code-of-conduct" class="text-white text-sm hover:underline">Code of Conduct</a></li>
-                        <li><a href="https://cannogacollege.ca/alumni" class="text-white text-sm hover:underline">Alumni</a></li>
-                        <li><a href="https://cannogacollege.ca/portal/support" class="text-white text-sm hover:underline">IT Support</a></li>
-                        <li><a href="https://cannogacollege.ca/contact" class="text-white text-sm hover:underline">Contact Us</a></li>
+                        <li><a href="https://cannogacollege.ca/admissions-policy" class="text-white text-sm hover:underline no-underline">Admissions Policy</a></li>
+                        <li><a href="https://cannogacollege.ca/academic-regulations" class="text-white text-sm hover:underline no-underline">Academic Regulations</a></li>
+                        <li><a href="https://cannogacollege.ca/student-handbook" class="text-white text-sm hover:underline no-underline">Student Handbook</a></li>
+                        <li><a href="https://cannogacollege.ca/refund-withdrawal-policy" class="text-white text-sm hover:underline no-underline">Refund Policy</a></li>
+                        <li><a href="https://cannogacollege.ca/code-of-conduct" class="text-white text-sm hover:underline no-underline">Code of Conduct</a></li>
+                        <li><a href="https://cannogacollege.ca/alumni" class="text-white text-sm hover:underline no-underline">Alumni</a></li>
+                        <li><a href="https://cannogacollege.ca/portal/support" class="text-white text-sm hover:underline no-underline">IT Support</a></li>
+                        <li><a href="https://cannogacollege.ca/contact" class="text-white text-sm hover:underline no-underline">Contact Us</a></li>
                     </ul>
                 </div>
 
@@ -235,11 +304,12 @@
                 <div>
                     <h3 class="font-bold text-sm uppercase tracking-widest mb-5 text-white">Explore</h3>
                     <ul class="space-y-3">
-                        <li><a href="https://cannogacollege.ca/admissions/requirements" class="text-white text-sm hover:underline">Admission Requirements</a></li>
-                        <li><a href="https://cannogacollege.ca/admissions/contact-information" class="text-white text-sm hover:underline">Admissions Contact</a></li>
-                        <li><a href="https://cannogacollege.ca/research/publications" class="text-white text-sm hover:underline">Publications</a></li>
-                        <li><a href="https://cannogacollege.ca/innovation" class="text-white text-sm hover:underline">Innovation</a></li>
-                        <li><a href="https://cannogacollege.ca/terms" class="text-white text-sm hover:underline">Terms of Use</a></li>
+                        <li><a href="https://cannogacollege.ca/admissions/requirements" class="text-white text-sm hover:underline no-underline">Admission Requirements</a></li>
+                        <li><a href="https://cannogacollege.ca/admissions/contact-information" class="text-white text-sm hover:underline no-underline">Admissions Contact</a></li>
+                        <li><a href="https://cannogacollege.ca/research/publications" class="text-white text-sm hover:underline no-underline">Publications</a></li>
+                        <li><a href="https://cannogacollege.ca/innovation" class="text-white text-sm hover:underline no-underline">Innovation</a></li>
+                        <li><a href="https://cannogacollege.ca/terms" class="text-white text-sm hover:underline no-underline">Terms of Use</a></li>
+                        <li><a href="https://cannogacollege.ca/student-guide/chat-with-cannoga-students" class="text-white text-sm hover:underline no-underline">Chat with Students</a></li>
                     </ul>
                 </div>
 
@@ -251,8 +321,8 @@
                             <svg class="w-4 h-4 text-white mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                             <div class="space-y-1">
                                 <span class="block font-semibold text-white">Cannoga College – Ottawa campus</span>
-                                <span class="block text-xs text-white/80">81 Montreal Rd,</span>
-                                <span class="block text-xs text-white/80">K1L 6E8 Ottawa, Ontario, Canada</span>
+                                <span class="block text-xs text-white/90">81 Montreal Rd,</span>
+                                <span class="block text-xs text-white/90">K1L 6E8 Ottawa, Ontario, Canada</span>
                             </div>
                         </li>
                         <li class="flex items-center gap-3 text-white text-sm">
@@ -264,7 +334,7 @@
             </div>
 
             <!-- Institutional & Accreditation Partner Logos -->
-            <div class="pt-6 pb-6 border-t border-white/10 flex flex-wrap items-center justify-center md:justify-start gap-8 md:gap-12">
+            <div class="pt-6 pb-6 flex flex-wrap items-center justify-center md:justify-start gap-8 md:gap-12">
                 <img src="https://ircc.com/icon.png" alt="IRCC Canada" class="h-9 md:h-11 w-auto object-contain brightness-0 invert opacity-85 hover:opacity-100 transition-opacity" />
                 <img src="https://upload.wikimedia.org/wikipedia/en/3/36/OCAS_Logo_2026.png" alt="OCAS" class="h-9 md:h-11 w-auto object-contain brightness-0 invert opacity-85 hover:opacity-100 transition-opacity" />
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Ottawa%2C_City_of.svg/3840px-Ottawa%2C_City_of.svg.png" alt="City of Ottawa" class="h-9 md:h-11 w-auto object-contain brightness-0 invert opacity-85 hover:opacity-100 transition-opacity" />
@@ -279,11 +349,11 @@
                         <p class="text-[11px] text-slate-500">Approved by Ontario Ministry of Colleges and Universities (MCU).</p>
                     </div>
                     <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 order-1 md:order-2">
-                        <a href="https://cannogacollege.ca/site-index" class="text-white text-xs hover:underline">Site Index</a>
-                        <a href="https://cannogacollege.ca/privacy" class="text-white text-xs hover:underline">Privacy Policy</a>
-                        <a href="https://cannogacollege.ca/terms" class="text-white text-xs hover:underline">Terms of Use</a>
-                        <a href="https://cannogacollege.ca/cookies" class="text-white text-xs hover:underline">Cookie Policy</a>
-                        <a href="https://cannogacollege.ca/accessibility" class="text-white text-xs hover:underline">Accessibility</a>
+                        <a href="https://cannogacollege.ca/site-index" class="text-white text-xs hover:underline no-underline">Site Index</a>
+                        <a href="https://cannogacollege.ca/privacy" class="text-white text-xs hover:underline no-underline">Privacy Policy</a>
+                        <a href="https://cannogacollege.ca/terms" class="text-white text-xs hover:underline no-underline">Terms of Use</a>
+                        <a href="https://cannogacollege.ca/cookies" class="text-white text-xs hover:underline no-underline">Cookie Policy</a>
+                        <a href="https://cannogacollege.ca/accessibility" class="text-white text-xs hover:underline no-underline">Accessibility</a>
                     </div>
                 </div>
             </div>
