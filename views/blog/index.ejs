@@ -205,7 +205,7 @@
 
                             <p class="text-black text-sm mb-4">
                                 <%= post.excerpt || post.content.replace(/<[^>]*>/g, '').substring(0, 300) %>
-                                <% if ((post.excerpt || post.content.replace(/<[^>]*>/g, '').length > 300) { %>
+                                <% if ((post.excerpt || post.content.replace(/<[^>]*>/g, '')).length > 300) { %>
                                     ...
                                 <% } %>
                             </p>
