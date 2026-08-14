@@ -19,17 +19,17 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body class="min-h-screen bg-white pt-20 font-sans antialiased text-black">
-    <!-- Blog-Only Header (Clean, Premium & Borderless) -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-xs w-full font-sans border-b border-neutral-100">
+    <!-- Blog-Only Header in Deep Blue (#0a151a) - Stroke Free -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a151a] text-white shadow-md w-full font-sans border-0">
         <div class="container mx-auto px-4 max-w-7xl h-20 flex items-center justify-between">
             <!-- Left Branding -->
             <div class="flex items-center gap-4">
                 <a href="https://cannogacollege.ca/" class="flex items-center group">
-                    <img src="/images/logo-cannoga.png" alt="Cannoga College" width="180" height="48" class="h-10 md:h-12 w-auto object-contain shrink-0" />
+                    <img src="/images/logo-cannoga.png" alt="Cannoga College" width="180" height="48" class="h-10 md:h-12 w-auto object-contain shrink-0 brightness-0 invert" />
                 </a>
-                <span class="hidden sm:inline-block w-px h-6 bg-neutral-200"></span>
+                <span class="hidden sm:inline-block w-px h-6 bg-white/20"></span>
                 <a href="/" class="flex items-center gap-2 no-underline">
-                    <span class="text-xs font-extrabold uppercase tracking-widest text-[#0a151a] bg-neutral-100 hover:bg-neutral-200 px-3 py-1.5 rounded-full transition-colors">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-[#0a151a] bg-[#c89211] hover:bg-[#b07f0e] px-3 py-1.5 rounded-full transition-colors shadow-xs">
                         Student Blog
                     </span>
                 </a>
@@ -37,11 +37,11 @@
 
             <!-- Navigation Links -->
             <nav class="hidden md:flex items-center gap-8">
-                <a href="/" class="text-sm font-semibold text-neutral-800 hover:text-black transition-colors no-underline">All Posts</a>
-                <a href="https://cannogacollege.ca/" class="text-sm font-semibold text-neutral-600 hover:text-black transition-colors no-underline">College Home</a>
-                <a href="https://cannogacollege.ca/studies" class="text-sm font-semibold text-neutral-600 hover:text-black transition-colors no-underline">Programmes</a>
-                <a href="https://cannogacollege.ca/admissions" class="text-sm font-semibold text-neutral-600 hover:text-black transition-colors no-underline">Admissions</a>
-                <a href="https://cannogacollege.ca/student-guide/international" class="text-sm font-semibold text-neutral-600 hover:text-black transition-colors no-underline">International</a>
+                <a href="/" class="text-sm font-bold text-white hover:text-[#c89211] transition-colors no-underline">All Posts</a>
+                <a href="https://cannogacollege.ca/" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors no-underline">College Home</a>
+                <a href="https://cannogacollege.ca/studies" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors no-underline">Programmes</a>
+                <a href="https://cannogacollege.ca/admissions" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors no-underline">Admissions</a>
+                <a href="https://cannogacollege.ca/student-guide/international" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors no-underline">International</a>
             </nav>
 
             <!-- Right Actions (Search & Apply CTA) -->
@@ -51,20 +51,20 @@
                         type="text" 
                         name="search" 
                         placeholder="Search articles..." 
-                        class="w-40 focus:w-56 transition-all duration-200 px-3.5 py-2 text-xs bg-neutral-50 border border-neutral-200 rounded-full focus:outline-none focus:bg-white focus:ring-2 focus:ring-neutral-200"
+                        class="w-40 focus:w-56 transition-all duration-200 px-3.5 py-2 text-xs bg-white/10 text-white placeholder-slate-400 border-0 rounded-full focus:outline-none focus:bg-white/20 focus:ring-1 focus:ring-[#c89211]"
                     />
-                    <button type="submit" class="absolute right-3 text-neutral-400 hover:text-black">
+                    <button type="submit" class="absolute right-3 text-slate-300 hover:text-white">
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </button>
                 </form>
-                <a href="https://cannogacollege.ca/admissions/application-process" class="bg-[#0a151a] hover:bg-slate-800 text-white px-5 py-2.5 rounded-full text-xs font-bold tracking-wide transition-colors shadow-xs no-underline">
+                <a href="https://cannogacollege.ca/admissions/application-process" class="bg-[#c89211] hover:bg-[#b07f0e] text-[#0a151a] px-5 py-2.5 rounded-full text-xs font-bold tracking-wide transition-colors shadow-xs no-underline">
                     Apply Now
                 </a>
             </div>
 
             <!-- Mobile Toggle -->
             <div class="md:hidden flex items-center gap-2">
-                <button id="mobile-menu-btn" class="p-2 text-neutral-800 hover:text-black focus:outline-none" aria-label="Toggle Menu">
+                <button id="mobile-menu-btn" class="p-2 text-white hover:text-[#c89211] focus:outline-none" aria-label="Toggle Menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -74,18 +74,18 @@
     </header>
 
     <!-- Mobile Menu Backdrop -->
-    <div id="mobile-menu-backdrop" class="hidden fixed inset-0 bg-black/50 z-40 md:hidden"></div>
+    <div id="mobile-menu-backdrop" class="hidden fixed inset-0 bg-black/60 z-40 md:hidden"></div>
 
     <!-- Mobile Menu Drawer -->
-    <div id="mobile-menu" class="hidden fixed top-20 left-0 right-0 bottom-0 bg-white z-50 overflow-y-auto px-6 py-6 border-t border-neutral-100 md:hidden font-sans">
+    <div id="mobile-menu" class="hidden fixed top-20 left-0 right-0 bottom-0 bg-[#0a151a] text-white z-50 overflow-y-auto px-6 py-6 border-0 md:hidden font-sans">
         <div class="flex flex-col gap-4">
-            <a href="/" class="text-base font-bold text-neutral-900 no-underline py-2 border-b border-neutral-100">All Blog Posts</a>
-            <a href="https://cannogacollege.ca/" class="text-base font-bold text-neutral-900 no-underline py-2 border-b border-neutral-100">Cannoga College Home</a>
-            <a href="https://cannogacollege.ca/studies" class="text-base font-bold text-neutral-900 no-underline py-2 border-b border-neutral-100">Explore Programmes</a>
-            <a href="https://cannogacollege.ca/admissions" class="text-base font-bold text-neutral-900 no-underline py-2 border-b border-neutral-100">Admissions & Apply</a>
-            <a href="https://cannogacollege.ca/student-guide/international" class="text-base font-bold text-neutral-900 no-underline py-2 border-b border-neutral-100">International Students</a>
-            <a href="https://cannogacollege.ca/housing" class="text-base font-bold text-neutral-900 no-underline py-2 border-b border-neutral-100">Student Housing</a>
-            <a href="https://cannogacollege.ca/admissions/application-process" class="bg-[#0a151a] text-white px-6 py-3.5 rounded-full text-center font-bold tracking-wider uppercase text-xs mt-4 no-underline shadow-xs">
+            <a href="/" class="text-base font-bold text-white no-underline py-2 border-b border-white/10">All Blog Posts</a>
+            <a href="https://cannogacollege.ca/" class="text-base font-bold text-slate-200 no-underline py-2 border-b border-white/10">Cannoga College Home</a>
+            <a href="https://cannogacollege.ca/studies" class="text-base font-bold text-slate-200 no-underline py-2 border-b border-white/10">Explore Programmes</a>
+            <a href="https://cannogacollege.ca/admissions" class="text-base font-bold text-slate-200 no-underline py-2 border-b border-white/10">Admissions & Apply</a>
+            <a href="https://cannogacollege.ca/student-guide/international" class="text-base font-bold text-slate-200 no-underline py-2 border-b border-white/10">International Students</a>
+            <a href="https://cannogacollege.ca/housing" class="text-base font-bold text-slate-200 no-underline py-2 border-b border-white/10">Student Housing</a>
+            <a href="https://cannogacollege.ca/admissions/application-process" class="bg-[#c89211] text-[#0a151a] px-6 py-3.5 rounded-full text-center font-bold tracking-wider uppercase text-xs mt-4 no-underline shadow-xs">
                 Apply to Cannoga College
             </a>
         </div>
@@ -94,8 +94,8 @@
     <!-- Main View Content -->
     <%- body %>
 
-    <!-- Footer - Clean & Seamless -->
-    <footer class="bg-[#0a151a] text-white pt-16 pb-10 font-sans mt-16">
+    <!-- Footer - Deep Blue (#0a151a) -->
+    <footer class="bg-[#0a151a] text-white pt-16 pb-10 font-sans mt-16 border-0">
         <div class="container mx-auto px-4 max-w-7xl">
             <!-- Top Row: Brand + Land Acknowledgement + Social -->
             <div class="mb-12 pb-10 border-b border-white/10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
