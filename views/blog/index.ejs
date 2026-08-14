@@ -1,0 +1,220 @@
+<div class="min-h-screen bg-white">
+    <!-- Hero Section -->
+    <section 
+        class="relative overflow-hidden transition-all duration-700 ease-in-out border-b border-black/5"
+        style="background-color: #0a151a;"
+    >
+        <div class="container mx-auto flex flex-col lg:flex-row items-stretch gap-2 lg:gap-16 pt-0 md:pt-12 pb-8 lg:pb-0 h-auto lg:min-h-[240px] relative z-10">
+            <!-- Left Content -->
+            <div class="lg:w-1/2 space-y-6 relative z-10 flex flex-col justify-center pt-2 lg:pt-0 px-4 md:px-0 py-12 lg:py-0 text-white">
+                <div class="space-y-4">
+                    <h1 class="font-bold text-white text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight pt-8 lg:pt-0">
+                        Cannoga College Student Ambassadors Blog
+                    </h1>
+                    <p class="text-xl md:text-2xl text-white max-w-xl leading-relaxed">
+                        Stories and insights from Cannoga College student ambassadors sharing their experiences studying and living in Ottawa, Ontario, Canada.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Image -->
+            <div class="lg:w-1/2 w-full relative z-20 order-first lg:order-none h-[120px] sm:h-[160px] lg:h-auto">
+                <div class="h-full w-full relative">
+                    <div class="relative w-full h-full bg-neutral-100 overflow-hidden after:content-[''] after:absolute after:inset-0 after:bg-black/10 after:mix-blend-multiply">
+                        <img
+                            src="/images/1775817359452-019d76f5-cb93-7e9a-8515-61a71c69fa56.png"
+                            alt="Cannoga College Student Ambassadors Blog"
+                            class="object-cover w-full h-full object-center"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Decorative background elements -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/5 to-transparent pointer-events-none"></div>
+    </section>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="container mx-auto px-4 py-6 max-w-6xl">
+        <nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-sm">
+            <a
+                href="/"
+                class="text-neutral-500 hover:text-black transition-colors font-medium"
+            >
+                Home
+            </a>
+            <span class="text-neutral-400">/</span>
+            <span class="text-neutral-900 font-medium">Blog</span>
+        </nav>
+
+        <!-- Alternative: Compact back navigation -->
+        <div class="mt-4">
+            <a href="https://cannogacollege.ca/" class="text-neutral-600 hover:text-black font-semibold inline-flex items-center gap-2 transition-colors group">
+                ←
+                <span>Back to Cannoga College</span>
+                <span class="text-neutral-400">•</span>
+                <span class="text-neutral-500 text-xs uppercase tracking-wide">Ottawa Campus</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-8 md:py-16 max-w-6xl">
+        <% if (category) { %>
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Posts in category "<%= category %>"</h2>
+                <a href="/" class="text-neutral-600 hover:text-black underline">← Back to all posts</a>
+            </div>
+        <% } %>
+
+        <!-- Search and Filter -->
+        <div class="mb-8 space-y-4">
+            <!-- Search Bar -->
+            <div class="max-w-md pb-6 md:pb-8">
+                <form method="GET" class="flex gap-2">
+                    <input
+                        type="text"
+                        name="search"
+                        value="<%= search || '' %>"
+                        placeholder="Search blog posts..."
+                        class="flex-1 px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
+                    />
+                    <% if (category) { %>
+                        <input type="hidden" name="category" value="<%= category %>" />
+                    <% } %>
+                    <button type="submit" class="px-6 py-2 bg-[#0a151a] text-white rounded-lg hover:bg-slate-800 transition-colors font-bold text-sm">
+                        Search
+                    </button>
+                </form>
+            </div>
+
+            <!-- Category Filter -->
+            <% if (categories && categories.length > 0) { %>
+            <div class="mb-8">
+                <h3 class="text-lg font-bold mb-4">Filter by Category</h3>
+                <div class="flex flex-wrap gap-2">
+            <a
+                href="/"
+                class="inline-block text-sm px-4 py-2 rounded-md capitalize transition-colors <%= !category ? 'bg-neutral-800 text-white ring-2 ring-black ring-offset-2' : 'bg-black text-white hover:bg-neutral-800' %>"
+            >
+                All Posts
+            </a>
+                    <% categories.forEach(cat => { %>
+                        <a
+                            href="/?category=<%= encodeURIComponent(cat) %>"
+                            class="inline-block text-sm px-4 py-2 rounded-md capitalize transition-colors <%= category === cat ? 'bg-neutral-800 text-white ring-2 ring-black ring-offset-2' : 'bg-black text-white hover:bg-neutral-800' %>"
+                        >
+                            <%= cat %>
+                        </a>
+                    <% }); %>
+                </div>
+            </div>
+        <% } %>
+
+        <% if (posts.length === 0) { %>
+            <div class="text-center py-16">
+                <h2 class="text-2xl font-bold mb-4">No posts found</h2>
+                <p class="text-neutral-600 mb-8">There are no blog posts available at the moment.</p>
+                <a href="/" class="bg-[#0a151a] text-white px-6 py-3 font-bold hover:bg-slate-800 transition-colors rounded-lg">Back to Blog</a>
+            </div>
+        <% } else { %>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <% posts.forEach(post => { %>
+                    <a
+                        href="/<%= post.slug %>"
+                        class="flex flex-col bg-neutral-100 overflow-hidden group hover:bg-neutral-200 transition-colors h-full rounded-xl shadow-sm border border-neutral-200"
+                    >
+                        <div class="aspect-[16/9] relative overflow-hidden bg-neutral-200">
+                            <img
+                                src="<%= post.imageUrl || '/images/admissions/events.jpg' %>"
+                                alt="<%= post.title %>"
+                                class="object-cover group-hover:opacity-80 transition-opacity duration-300 w-full h-full"
+                            />
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 text-[10px] font-bold uppercase tracking-widest bg-[#0a151a] text-white rounded">
+                                    Blog
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 text-[13px] uppercase tracking-widest text-black mb-3">
+                                <span><%= formatToDDMMYYYY(post.publishDate) %></span>
+                            </div>
+
+                            <h2 class="text-xl font-bold mb-3 text-neutral-900 group-hover:underline leading-tight">
+                                <%= post.title %>
+                            </h2>
+
+                            <p class="text-black text-sm mb-4">
+                                <%= post.excerpt || post.content.replace(/<[^>]*>/g, '').substring(0, 300) %>
+                                <% if ((post.excerpt || post.content.replace(/<[^>]*>/g, '')).length > 300) { %>
+                                    ...
+                                <% } %>
+                            </p>
+
+                            <% if (post.categories && post.categories.length > 0) { %>
+                                <div class="flex flex-wrap gap-1 mb-3">
+                                    <% post.categories.slice(0, 3).forEach(category => { %>
+                                        <a
+                                            href="/?category=<%= encodeURIComponent(category) %>"
+                                            class="inline-block bg-[#0a151a] text-white text-xs px-2 py-1 rounded-full capitalize"
+                                        >
+                                            <%= category %>
+                                        </a>
+                                    <% }); %>
+                                </div>
+                            <% } %>
+
+                            <div class="mt-auto flex items-center text-xs font-bold uppercase tracking-wider text-black">
+                                Read more →
+                            </div>
+                        </div>
+                    </a>
+                <% }); %>
+            </div>
+
+            <% if (totalPages > 1) { %>
+                <div class="flex justify-center mt-12">
+                    <nav class="flex items-center space-x-2">
+                        <% if (currentPage > 1) { %>
+                            <a href="<%= `/?${category ? `category=${encodeURIComponent(category)}&` : ''}${search ? `search=${encodeURIComponent(search)}&` : ''}page=${currentPage - 1}` %>" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors">
+                                Previous
+                            </a>
+                        <% } %>
+
+                        <% for (let i = Math.max(1, currentPage - 2); i <= Math.min(totalPages, currentPage + 2); i++) { %>
+                            <a href="<%= `/?${category ? `category=${encodeURIComponent(category)}&` : ''}${search ? `search=${encodeURIComponent(search)}&` : ''}page=${i}` %>" class="<%= i === currentPage ? 'px-4 py-2 bg-[#0a151a] text-white rounded' : 'px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors' %>">
+                                <%= i %>
+                            </a>
+                        <% } %>
+
+                        <% if (currentPage < totalPages) { %>
+                            <a href="<%= `/?${category ? `category=${encodeURIComponent(category)}&` : ''}${search ? `search=${encodeURIComponent(search)}&` : ''}page=${currentPage + 1}` %>" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors">
+                                Next
+                            </a>
+                        <% } %>
+                    </nav>
+                </div>
+            <% } %>
+        <% } %>
+
+        <!-- Related Links -->
+        <div class="mt-16 pt-10 border-t border-neutral-200">
+            <h3 class="text-sm font-bold uppercase tracking-widest text-neutral-900 mb-6">Related Links</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+                <a href="https://cannogacollege.ca/admissions/application-process" class="bg-neutral-50 p-5 rounded-xl hover:bg-neutral-100 transition-colors group border border-neutral-200">
+                    <h4 class="font-bold text-neutral-900 mb-1 group-hover:underline text-sm">How to Apply</h4>
+                    <p class="text-xs text-neutral-500">Step-by-step application guide.</p>
+                </a>
+                <a href="https://cannogacollege.ca/studies" class="bg-neutral-50 p-5 rounded-xl hover:bg-neutral-100 transition-colors group border border-neutral-200">
+                    <h4 class="font-bold text-neutral-900 mb-1 group-hover:underline text-sm">Explore Programmes</h4>
+                    <p class="text-xs text-neutral-500">Browse all degree programmes.</p>
+                </a>
+                <a href="https://cannogacollege.ca/student-guide/international" class="bg-neutral-50 p-5 rounded-xl hover:bg-neutral-100 transition-colors group border border-neutral-200">
+                    <h4 class="font-bold text-neutral-900 mb-1 group-hover:underline text-sm">International Students</h4>
+                    <p class="text-xs text-neutral-500">Visa, housing, and arrival info.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
