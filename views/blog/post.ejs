@@ -100,7 +100,7 @@
                 <div class="-mx-8 px-8">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
                         <% otherBlogs.forEach(blog => { %>
-                            <a href="/<%= blog.slug %>" class="group flex flex-col h-full bg-neutral-50 hover:bg-neutral-100/80 rounded-2xl overflow-hidden shadow-xs border border-neutral-100 transition-all">
+                            <a href="/<%= blog.slug %>" class="group flex flex-col h-full bg-neutral-50 hover:bg-neutral-100/80 rounded-2xl overflow-hidden shadow-xs border-0 transition-all">
                                 <div class="aspect-video bg-neutral-200 overflow-hidden relative">
                                     <img
                                         src="<%= blog.imageUrl || '/images/admissions/events.jpg' %>"
@@ -179,15 +179,15 @@
         <div class="mt-16 pt-10 border-t border-neutral-100">
             <h3 class="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-6">Related Links</h3>
             <div class="grid md:grid-cols-3 gap-4">
-                <a href="https://cannogacollege.ca/admissions/application-process" class="bg-neutral-50 p-5 rounded-2xl hover:bg-neutral-100 transition-colors group border border-neutral-100">
+                <a href="https://cannogacollege.ca/admissions/application-process" class="bg-neutral-50 p-5 rounded-2xl hover:bg-neutral-100 transition-colors group border-0 shadow-xs">
                     <h4 class="font-bold text-neutral-900 mb-1 group-hover:underline text-sm">How to Apply</h4>
                     <p class="text-xs text-neutral-500">Step-by-step application guide.</p>
                 </a>
-                <a href="https://cannogacollege.ca/studies" class="bg-neutral-50 p-5 rounded-2xl hover:bg-neutral-100 transition-colors group border border-neutral-100">
+                <a href="https://cannogacollege.ca/studies" class="bg-neutral-50 p-5 rounded-2xl hover:bg-neutral-100 transition-colors group border-0 shadow-xs">
                     <h4 class="font-bold text-neutral-900 mb-1 group-hover:underline text-sm">Explore Programmes</h4>
                     <p class="text-xs text-neutral-500">Browse all degree programmes.</p>
                 </a>
-                <a href="https://cannogacollege.ca/student-guide/international" class="bg-neutral-50 p-5 rounded-2xl hover:bg-neutral-100 transition-colors group border border-neutral-100">
+                <a href="https://cannogacollege.ca/student-guide/international" class="bg-neutral-50 p-5 rounded-2xl hover:bg-neutral-100 transition-colors group border-0 shadow-xs">
                     <h4 class="font-bold text-neutral-900 mb-1 group-hover:underline text-sm">International Students</h4>
                     <p class="text-xs text-neutral-500">Visa, housing, and arrival info.</p>
                 </a>
