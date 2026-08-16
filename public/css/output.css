@@ -7795,17 +7795,26 @@ body:not(:has([data-theme="admin"])):not(:has([data-theme="portal"])) {
 .blog-content figure.image {
   display: block;
   clear: both;
-  text-align: center;
-  margin: 1rem auto;
+  text-align: left;
+  margin: 1.5rem 0;
+  width: 50%;
+  max-width: 50%;
 }
 .blog-content figure.image img {
   display: block;
-  margin: 0 auto;
+  margin: 0;
+  width: 100%;
   max-width: 100%;
-  min-width: 50px;
+  height: auto;
+  border-radius: 0.5rem;
+}
+.blog-content figure.image:has(img[alt*="Author" i]), .blog-content figure.image:has(img[src*="author" i]), .blog-content figure.author-image, .blog-content img[alt*="Author" i] {
+  width: 25% !important;
+  max-width: 25% !important;
+  margin: 1.5rem 0 !important;
+  text-align: left !important;
 }
 .blog-content figure.image.image_resized {
-  max-width: 100%;
   display: block;
   box-sizing: border-box;
 }
@@ -7818,23 +7827,29 @@ body:not(:has([data-theme="admin"])):not(:has([data-theme="portal"])) {
 .blog-content figure.image-style-side {
   float: right;
   margin-left: 1.5em;
+  margin-right: 0;
+  width: 50%;
   max-width: 50%;
 }
-.blog-content figure.image-style-align-left {
+.blog-content figure.image-style-align-left, .blog-content figure.image-style-block-align-left {
   float: left;
   margin-right: 1.5em;
+  margin-left: 0;
+  text-align: left;
 }
-.blog-content figure.image-style-align-right {
+.blog-content figure.image-style-align-right, .blog-content figure.image-style-block-align-right {
   float: right;
   margin-left: 1.5em;
+  margin-right: 0;
 }
-.blog-content figure.image-style-align-center {
+.blog-content figure.image-style-align-center, .blog-content figure.image-style-block-align-center {
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 .blog-content span.image-inline {
   display: inline-flex;
-  max-width: 100%;
+  max-width: 50%;
   align-items: flex-start;
 }
 .blog-content span.image-inline img {
