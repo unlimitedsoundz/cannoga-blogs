@@ -4,37 +4,31 @@
         class="relative overflow-hidden transition-all duration-700 ease-in-out"
         style="background-color: #0a151a;"
     >
-        <div class="container mx-auto flex flex-col lg:flex-row items-stretch gap-2 lg:gap-16 pt-0 md:pt-12 pb-8 lg:pb-0 h-auto lg:min-h-[240px] relative z-10">
+        <div class="container mx-auto flex flex-col lg:flex-row items-center gap-4 lg:gap-12 py-6 md:py-8 px-4 sm:px-6 lg:px-8 relative z-10">
             <!-- Left Content -->
-            <div class="lg:w-1/2 space-y-6 relative z-10 flex flex-col justify-center pt-2 lg:pt-0 px-4 md:px-0 py-12 lg:py-0 text-white">
-                <div class="space-y-4">
-                    <h1 class="font-bold text-white text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight pt-8 lg:pt-0">
-                        <%= post.title %>
-                    </h1>
-                    <p class="text-xl md:text-2xl text-white max-w-xl leading-relaxed">
-                        <%= post.excerpt || 'Read this insightful blog post from Cannoga College student ambassadors.' %>
-                    </p>
-                    <p class="text-sm text-neutral-300">
-                        Published on <%= formatToDDMMYYYY(post.publishDate) %>
-                    </p>
-                </div>
+            <div class="lg:w-3/5 space-y-3 relative z-10 flex flex-col justify-center text-white">
+                <h1 class="font-bold text-white text-2xl sm:text-3xl md:text-4xl leading-tight tracking-tight">
+                    <%= post.title %>
+                </h1>
+                <p class="text-base sm:text-lg text-neutral-200 max-w-xl leading-relaxed">
+                    <%= post.excerpt || 'Read this insightful blog post from Cannoga College student ambassadors.' %>
+                </p>
+                <p class="text-xs sm:text-sm text-neutral-400 font-medium">
+                    Published on <%= formatToDDMMYYYY(post.publishDate) %>
+                </p>
             </div>
 
             <!-- Right Image -->
-            <div class="lg:w-1/2 w-full relative z-20 order-first lg:order-none h-[120px] sm:h-[160px] lg:h-auto">
-                <div class="h-full w-full relative">
-                    <div class="relative w-full h-full bg-neutral-100 overflow-hidden after:content-[''] after:absolute after:inset-0 after:bg-black/10 after:mix-blend-multiply">
-                        <img
-                            src="<%= post.imageUrl || '/images/1775817359452-019d76f5-cb93-7e9a-8515-61a71c69fa56.png' %>"
-                            alt="<%= post.title %>"
-                            class="object-cover w-full h-full object-center"
-                        />
-                    </div>
-                </div>
+            <div class="lg:w-2/5 w-full relative z-20 order-first lg:order-none h-[180px] sm:h-[220px] lg:h-[240px] rounded-xl overflow-hidden shadow-lg">
+                <img
+                    src="<%= post.imageUrl || '/images/1775817359452-019d76f5-cb93-7e9a-8515-61a71c69fa56.png' %>"
+                    alt="<%= post.title %>"
+                    class="object-cover w-full h-full object-center hover:scale-105 transition-transform duration-500"
+                />
             </div>
         </div>
         <!-- Decorative background elements -->
-        <div class="absolute inset-0 bg-gradient-to-r from-black/5 to-transparent pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent pointer-events-none"></div>
     </section>
 
     <!-- Breadcrumb Navigation -->
@@ -95,40 +89,81 @@
 
         <!-- Keep Reading -->
         <% if (otherBlogs && otherBlogs.length > 0) { %>
-            <div class="mt-16 pt-10 border-t border-neutral-100">
+            <% 
+                const keepReadingPalettes = [
+                    { bgColor: 'bg-[#6366f1]', waveColor: '#3730a3' }, // Electric Indigo
+                    { bgColor: 'bg-[#ec4899]', waveColor: '#831843' }, // Vibrant Hot Pink
+                    { bgColor: 'bg-[#10b981]', waveColor: '#064e3b' }, // Electric Emerald
+                    { bgColor: 'bg-[#f97316]', waveColor: '#7c2d12' }, // Vibrant Bright Orange
+                ];
+            %>
+            <div class="mt-16 pt-10">
                 <h3 class="text-left text-xs font-bold uppercase tracking-widest text-neutral-500 mb-6">Keep Reading</h3>
-                <div class="-mx-8 px-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-                        <% otherBlogs.forEach(blog => { %>
-                            <a href="/<%= blog.slug %>" class="group flex flex-col h-full bg-neutral-50 hover:bg-neutral-100/80 rounded-2xl overflow-hidden shadow-xs border-0 transition-all">
-                                <div class="aspect-video bg-neutral-200 overflow-hidden relative">
+                <div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                        <% otherBlogs.forEach((blog, idx) => { 
+                            const palette = keepReadingPalettes[idx % keepReadingPalettes.length];
+                        %>
+                            <a 
+                                href="/<%= blog.slug %>" 
+                                class="block w-full p-3 rounded-md <%= palette.bgColor %> no-underline overflow-hidden group hover:brightness-105 transition-all duration-300 flex flex-col justify-between"
+                            >
+                                <!-- Top Image with Wavy Cutout -->
+                                <div class="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-black/10">
                                     <img
                                         src="<%= blog.imageUrl || '/images/admissions/events.jpg' %>"
                                         alt="<%= blog.title %>"
-                                        class="object-cover group-hover:scale-105 transition-transform duration-500 w-full h-full"
+                                        class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                                     />
-                                    <div class="absolute top-4 left-4">
-                                        <span class="px-3 py-1 text-[10px] font-bold uppercase tracking-widest bg-[#0a151a] text-white rounded-full">
-                                            Blog
-                                        </span>
+                                    
+                                    <!-- Organic Wavy Edge overlay at BOTTOM of image -->
+                                    <div
+                                        class="absolute bottom-[-18px] left-0 right-0 h-12 overflow-hidden leading-none z-10 pointer-events-none animate-wave-schools"
+                                        style="animation-delay: <%= (idx * 0.4) %>s;"
+                                    >
+                                        <svg
+                                            viewBox="0 0 1440 200"
+                                            preserveAspectRatio="none"
+                                            class="w-full h-full fill-current block"
+                                            style="color: <%= palette.waveColor %>;"
+                                        >
+                                            <path
+                                                fill="currentColor"
+                                                d="M0,45 C320,105 640,-15 960,75 C1200,115 1380,45 1440,65 V200 H0 Z"
+                                            />
+                                        </svg>
                                     </div>
                                 </div>
-                                <div class="flex-1 flex flex-col p-5">
-                                    <h3 class="text-xl font-bold mb-2 group-hover:underline leading-tight text-neutral-900"><%= blog.title %></h3>
-                                    <p class="text-sm text-neutral-600 line-clamp-3 mb-4 flex-1 leading-relaxed">
-                                        <%= blog.excerpt || blog.content.replace(/<[^>]*>/g, '').slice(0, 150) + "..." %>
-                                    </p>
-                                    <% if (blog.tags && blog.tags.length > 0) { %>
-                                        <div class="flex flex-wrap gap-1 mb-3">
-                                            <% blog.tags.slice(0, 3).forEach(tag => { %>
-                                                <span class="inline-block bg-neutral-200/70 text-neutral-800 text-[11px] font-medium px-2.5 py-0.5 rounded-full capitalize">
-                                                    <%= tag %>
-                                                </span>
-                                            <% }); %>
+
+                                <!-- Card Content -->
+                                <div class="pt-4 pb-2 px-2 flex flex-col justify-between flex-1 gap-3 text-white">
+                                    <div class="space-y-2">
+                                        <div class="text-[11px] uppercase tracking-wider text-white/80 font-bold">
+                                            <%= formatToDDMMYYYY(blog.publishDate) %>
                                         </div>
-                                    <% } %>
-                                    <div class="mt-auto pt-3 flex items-center text-xs text-neutral-500 uppercase tracking-wider">
-                                        <span><%= formatToDDMMYYYY(blog.publishDate) %></span>
+
+                                        <h3 class="text-xl sm:text-2xl font-black text-white uppercase tracking-tight leading-tight">
+                                            <%= blog.title %>
+                                        </h3>
+
+                                        <p class="text-xs sm:text-sm font-medium text-white/90 leading-relaxed line-clamp-2">
+                                            <%= blog.excerpt || blog.content.replace(/<[^>]*>/g, '').slice(0, 120) %>
+                                        </p>
+                                    </div>
+
+                                    <div class="pt-3 flex items-end justify-between gap-4 mt-auto">
+                                        <span class="text-[11px] font-bold uppercase tracking-wider text-white">
+                                            Read Story
+                                        </span>
+
+                                        <div
+                                            class="shrink-0 mb-0.5 animate-arrow-schools group-hover:scale-110 transition-transform"
+                                            style="animation-delay: <%= (idx * 0.4) %>s;"
+                                        >
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                            </svg>
+                                        </div>
                                     </div>
                                 </div>
                             </a>
@@ -140,13 +175,13 @@
 
         <!-- Post Navigation -->
         <% if (prevBlog || nextBlog) { %>
-            <div class="mt-16 pt-10 border-t border-neutral-100">
+            <div class="mt-16 pt-10">
                 <h3 class="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-6">More Posts</h3>
                 <div class="flex justify-between items-center">
                     <% if (prevBlog) { %>
                         <a
                             href="/<%= prevBlog.slug %>"
-                            class="flex items-center gap-2 text-neutral-600 hover:text-black transition-colors group"
+                            class="flex items-center gap-2 text-neutral-600 hover:text-black transition-colors group no-underline"
                         >
                             ←
                             <div class="text-left">
@@ -160,7 +195,7 @@
                     <% if (nextBlog) { %>
                         <a
                             href="/<%= nextBlog.slug %>"
-                            class="flex items-center gap-2 text-neutral-600 hover:text-black transition-colors group text-right"
+                            class="flex items-center gap-2 text-neutral-600 hover:text-black transition-colors group text-right no-underline"
                         >
                             <div class="text-right">
                                 <div class="text-xs font-bold uppercase tracking-widest text-neutral-400">Next</div>
@@ -176,18 +211,18 @@
         <% } %>
 
         <!-- Related Links -->
-        <div class="mt-16 pt-10 border-t border-neutral-100">
+        <div class="mt-16 pt-10">
             <h3 class="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-6">Related Links</h3>
             <div class="grid md:grid-cols-3 gap-4">
-                <a href="https://cannogacollege.ca/admissions/application-process" class="bg-neutral-50 p-5 rounded-2xl hover:bg-neutral-100 transition-colors group border-0 shadow-xs">
+                <a href="https://cannogacollege.ca/admissions/application-process" class="bg-neutral-50 p-5 rounded-2xl hover:bg-neutral-100 transition-colors group">
                     <h4 class="font-bold text-neutral-900 mb-1 group-hover:underline text-sm">How to Apply</h4>
                     <p class="text-xs text-neutral-500">Step-by-step application guide.</p>
                 </a>
-                <a href="https://cannogacollege.ca/studies" class="bg-neutral-50 p-5 rounded-2xl hover:bg-neutral-100 transition-colors group border-0 shadow-xs">
+                <a href="https://cannogacollege.ca/studies" class="bg-neutral-50 p-5 rounded-2xl hover:bg-neutral-100 transition-colors group">
                     <h4 class="font-bold text-neutral-900 mb-1 group-hover:underline text-sm">Explore Programmes</h4>
                     <p class="text-xs text-neutral-500">Browse all degree programmes.</p>
                 </a>
-                <a href="https://cannogacollege.ca/student-guide/international" class="bg-neutral-50 p-5 rounded-2xl hover:bg-neutral-100 transition-colors group border-0 shadow-xs">
+                <a href="https://cannogacollege.ca/student-guide/international" class="bg-neutral-50 p-5 rounded-2xl hover:bg-neutral-100 transition-colors group">
                     <h4 class="font-bold text-neutral-900 mb-1 group-hover:underline text-sm">International Students</h4>
                     <p class="text-xs text-neutral-500">Visa, housing, and arrival info.</p>
                 </a>

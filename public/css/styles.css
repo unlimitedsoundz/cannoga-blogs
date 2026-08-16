@@ -352,3 +352,30 @@ body:not(:has([data-theme="admin"])):not(:has([data-theme="portal"])) {
 .blog-content a:hover {
   color: #1d4ed8;
 }
+
+/* Academic Carousel styled card animations */
+@keyframes waveFloatSchools {
+  0%, 100% {
+    transform: translateY(12px) scaleY(1);
+  }
+  50% {
+    transform: translateY(-8px) scaleY(1.12);
+  }
+}
+
+@keyframes arrowFloatSchools {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(5px, -5px);
+  }
+}
+
+.animate-wave-schools {
+  animation: waveFloatSchools 3.4s ease-in-out infinite;
+}
+
+.animate-arrow-schools {
+  animation: arrowFloatSchools 2.2s ease-in-out infinite;
+}
