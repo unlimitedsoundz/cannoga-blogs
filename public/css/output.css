@@ -6691,9 +6691,6 @@ div.ck.ck-balloon-panel.ck-mention-balloon {
   .border-\[\#f97316\] {
     border-color: #f97316;
   }
-  .border-neutral-100 {
-    border-color: var(--color-neutral-100);
-  }
   .border-white\/10 {
     border-color: color-mix(in srgb, #fff 10%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -7724,10 +7721,6 @@ ul.list-disc li::before, .blog-content li::before {
   opacity: 0.8 !important;
 }
 body:not(:has([data-theme="admin"])):not(:has([data-theme="portal"])) {
-  .border-neutral-200, .border-neutral-100, .border-neutral-50, .border-neutral-300 {
-    border-color: #000000;
-    border-width: 1px;
-  }
   [class*="shadow-"] {
     box-shadow: none !important;
   }
