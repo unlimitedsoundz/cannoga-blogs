@@ -184,7 +184,7 @@ router.get('/:slug', async (req, res) => {
     const { data: posts, error } = await supabase
       .from('blogs')
       .select('*')
-      .or(`slug.eq."${rawSlug}",slug.eq."${decodedSlug}",slug.eq."${sanitizedSlug}"`)
+      .or(`slug.eq.${rawSlug},slug.eq.${decodedSlug},slug.eq.${sanitizedSlug}`)
       .eq('published', true)
       .limit(1);
 
@@ -211,7 +211,7 @@ router.get('/:slug', async (req, res) => {
     const { data: otherBlogs } = await supabase
       .from('blogs')
       .select('*')
-      .neq('slug', slug)
+      .neq('id', post.id)
       .eq('published', true)
       .order('publishDate', { ascending: false })
       .limit(2);
@@ -227,18 +227,17 @@ router.get('/:slug', async (req, res) => {
     let nextBlog = null;
 
     if (allBlogs) {
-      const currentIndex = allBlogs.findIndex(blog => blog.slug === slug);
+      const currentIndex = allBlogs.findIndex(b => b.id === post.id);
       if (currentIndex > 0) {
         prevBlog = allBlogs[currentIndex - 1];
       }
-      if (currentIndex < allBlogs.length - 1) {
+      if (currentIndex < allBlogs.length - 1 && currentIndex !== -1) {
         nextBlog = allBlogs[currentIndex + 1];
       }
     }
 
     // Render the blog content
     const ejs = require('ejs');
-    const fs = require('fs');
     const path = require('path');
 
     const blogContent = await ejs.renderFile(path.join(__dirname, '../views/blog/post.ejs'), {
@@ -250,9 +249,9 @@ router.get('/:slug', async (req, res) => {
     });
 
     const fullPage = await ejs.renderFile(path.join(__dirname, '../views/layouts/main.ejs'), {
-      title: post.meta_title || `${post.title} | Cannoga Blog`,
-      metaDescription: post.meta_description || post.excerpt,
-      ogImage: post.og_image || post.imageUrl,
+      title: post.title ? `${post.title} | Cannoga Blog` : 'Cannoga Blog',
+      metaDescription: post.excerpt || (post.content ? post.content.replace(/<[^>]*>/g, '').substring(0, 160) : 'Cannoga Blog Post'),
+      ogImage: post.imageUrl || post.og_image || null,
       body: blogContent
     });
 
@@ -263,7 +262,7 @@ router.get('/:slug', async (req, res) => {
     const path = require('path');
 
     const errorContent = await ejs.renderFile(path.join(__dirname, '../views/error.ejs'), {
-      message: 'Error loading blog post',
+      message: 'Error loading blog post: ' + (error?.message || 'Server error'),
       status: 500
     });
 
