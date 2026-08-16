@@ -170,14 +170,25 @@ router.get('/', async (req, res) => {
 // Individual blog post page
 router.get('/:slug', async (req, res) => {
   try {
-    const { slug } = req.params;
+    const rawSlug = req.params.slug;
+    const decodedSlug = decodeURIComponent(rawSlug);
+    const sanitizedSlug = decodedSlug
+      .toLowerCase()
+      .trim()
+      .replace(/[,._\s/]+/g, '-')
+      .replace(/[^a-z0-9-]/g, '')
+      .replace(/-+/g, '-')
+      .replace(/^-+|-+$/g, '');
 
-    const { data: post, error } = await supabase
+    // Search by exact slug, decoded slug, or sanitized slug
+    const { data: posts, error } = await supabase
       .from('blogs')
       .select('*')
-      .eq('slug', slug)
+      .or(`slug.eq."${rawSlug}",slug.eq."${decodedSlug}",slug.eq."${sanitizedSlug}"`)
       .eq('published', true)
-      .single();
+      .limit(1);
+
+    const post = posts && posts.length > 0 ? posts[0] : null;
 
     if (error || !post) {
       const ejs = require('ejs');
