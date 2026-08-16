@@ -207,13 +207,13 @@
                                 <!-- Organic Wavy Edge overlay at BOTTOM of image with smooth wave animation -->
                                 <div
                                     class="absolute bottom-[-24px] left-0 right-0 h-16 sm:h-24 overflow-hidden leading-none z-10 pointer-events-none animate-wave-schools"
-                                    style="animation-delay: <%= (idx * 0.4) %>s;"
+                                    <%- `style="animation-delay: ${idx * 0.4}s;"` %>
                                 >
                                     <svg
                                         viewBox="0 0 1440 200"
                                         preserveAspectRatio="none"
                                         class="w-full h-full fill-current block"
-                                        style="color: <%= palette.waveColor %>;"
+                                        <%- `style="color: ${palette.waveColor};"` %>
                                     >
                                         <path
                                             fill="currentColor"
@@ -247,7 +247,7 @@
                                     <!-- Thick Arrow Icon in Bottom Right with Floating Animation -->
                                     <div
                                         class="shrink-0 mb-0.5 animate-arrow-schools group-hover:scale-110 transition-transform"
-                                        style="animation-delay: <%= (idx * 0.4) %>s;"
+                                        <%- `style="animation-delay: ${idx * 0.4}s;"` %>
                                     >
                                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
