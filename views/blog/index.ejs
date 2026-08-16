@@ -141,16 +141,16 @@
             <div class="mb-8">
                 <h3 class="text-lg font-bold mb-4 text-neutral-900">Filter by Category</h3>
                 <div class="flex flex-wrap gap-2">
-            <a
-                href="/"
-                class="inline-block text-xs font-semibold px-4 py-2 rounded-full capitalize transition-colors <%= !category ? 'bg-[#0a151a] text-white' : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200' %>"
-            >
-                All Posts
-            </a>
+                    <a
+                        href="/"
+                        class="inline-block text-xs font-semibold px-4 py-2 rounded-full capitalize transition-colors border-0 outline-none <%= !category ? 'bg-[#0a151a] text-white' : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200' %>"
+                    >
+                        All Posts
+                    </a>
                     <% categories.forEach(cat => { %>
                         <a
                             href="/?category=<%= encodeURIComponent(cat) %>"
-                            class="inline-block text-xs font-semibold px-4 py-2 rounded-full capitalize transition-colors <%= category === cat ? 'bg-[#0a151a] text-white' : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200' %>"
+                            class="inline-block text-xs font-semibold px-4 py-2 rounded-full capitalize transition-colors border-0 outline-none <%= category === cat ? 'bg-[#0a151a] text-white' : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200' %>"
                         >
                             <%= cat %>
                         </a>

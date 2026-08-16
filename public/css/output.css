@@ -6048,7 +6048,6 @@ div.ck.ck-balloon-panel.ck-mention-balloon {
     --font-weight-bold: 700;
     --font-weight-black: 900;
     --tracking-tight: -0.025em;
-    --tracking-wide: 0.025em;
     --tracking-wider: 0.05em;
     --tracking-widest: 0.1em;
     --leading-tight: 1.25;
@@ -6858,6 +6857,9 @@ div.ck.ck-balloon-panel.ck-mention-balloon {
   .py-1 {
     padding-block: calc(var(--spacing) * 1);
   }
+  .py-1\.5 {
+    padding-block: calc(var(--spacing) * 1.5);
+  }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
@@ -6890,9 +6892,6 @@ div.ck.ck-balloon-panel.ck-mention-balloon {
   }
   .pt-6 {
     padding-top: calc(var(--spacing) * 6);
-  }
-  .pt-8 {
-    padding-top: calc(var(--spacing) * 8);
   }
   .pt-10 {
     padding-top: calc(var(--spacing) * 10);
@@ -7003,10 +7002,6 @@ div.ck.ck-balloon-panel.ck-mention-balloon {
   .tracking-tight {
     --tw-tracking: var(--tracking-tight);
     letter-spacing: var(--tracking-tight);
-  }
-  .tracking-wide {
-    --tw-tracking: var(--tracking-wide);
-    letter-spacing: var(--tracking-wide);
   }
   .tracking-wider {
     --tw-tracking: var(--tracking-wider);
@@ -7171,6 +7166,10 @@ div.ck.ck-balloon-panel.ck-mention-balloon {
   .ease-in-out {
     --tw-ease: var(--ease-in-out);
     transition-timing-function: var(--ease-in-out);
+  }
+  .outline-none {
+    --tw-outline-style: none;
+    outline-style: none;
   }
   .group-hover\:scale-105 {
     &:is(:where(.group):hover *) {

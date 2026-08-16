@@ -68,7 +68,7 @@
         </div>
 
         <!-- Categories -->
-        <div class="mt-12 pt-8 border-t border-neutral-100">
+        <div class="mt-12 pt-4">
             <div class="flex flex-wrap gap-2">
                 <% (post.categories && post.categories.length > 0 ? post.categories : [
                     'Student Life',
@@ -79,7 +79,7 @@
                 ]).forEach(category => { %>
                     <a
                         href="/?category=<%= encodeURIComponent(category) %>"
-                        class="inline-block bg-[#0a151a] text-white text-xs font-medium px-3.5 py-1 rounded-full uppercase tracking-wide hover:bg-slate-800 transition-colors"
+                        class="inline-block bg-[#0a151a] text-white text-xs font-medium px-4 py-1.5 rounded-full uppercase tracking-wider hover:bg-slate-800 transition-colors border-0 outline-none"
                     >
                         <%= category %>
                     </a>
